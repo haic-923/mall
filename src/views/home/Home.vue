@@ -1,65 +1,17 @@
 <template>
 <div id="home">
  <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+ <div>
  <home-swiper :banners="banners"></home-swiper>
  <recommend-view :recommends="recommends"></recommend-view>
  <feature-view></feature-view>
  <tab-control class="tab-control" :title="['流行','新款','精选']"
  @tabClick="tabClick" />
  <goods-list :goods="goods[currentType].list"></goods-list>
+ </div>
+ <back-top @click.native="backTop"/>
  
- <ul>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
- </ul>
+
 </div>
 </template>
 
@@ -72,8 +24,10 @@ import FeatureView from './childComps/FeatureView'
 import NavBar from 'components/commo/navbar/NavBar'
 import TabControl from 'components/conten/tabControl/TabControl'
 import GoodsList from 'components/conten/goods/GoodsList'
+import BackTop from 'components/conten/backTop/BackTop'
 
 import {getHomeMultidata,getHomeGoods} from 'network/home'
+
 
 
 
@@ -87,7 +41,8 @@ export default {
       FeatureView,
        NavBar,
        TabControl,
-       GoodsList
+       GoodsList,
+       BackTop
       
     },
   
@@ -110,6 +65,8 @@ export default {
       this.getHomeGoods('sell')
 0    },
 methods:{
+
+
   tabClick(index){
     switch(index){
       case 0:
